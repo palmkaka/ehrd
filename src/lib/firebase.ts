@@ -4,13 +4,13 @@ import { getDatabase } from 'firebase/database';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCoLXp9C8QeOsP1t_ztoFqa9Q63yAh_zos',
-  authDomain: 'dashboard-b2b-fc6ec.firebaseapp.com',
-  projectId: 'dashboard-b2b-fc6ec',
-  storageBucket: 'dashboard-b2b-fc6ec.firebasestorage.app',
-  messagingSenderId: '213794265542',
-  appId: '1:213794265542:web:d123e69842aa0ac1a6bac7',
-  databaseURL: 'https://dashboard-b2b-fc6ec.firebaseio.com',
+  apiKey: 'AIzaSyDmaJxTJi6jB32hIzzLdXe4n4CwAfTqVK0',
+  authDomain: 'lark-app-e36e8.firebaseapp.com',
+  projectId: 'lark-app-e36e8',
+  storageBucket: 'lark-app-e36e8.firebasestorage.app',
+  messagingSenderId: '407013929066',
+  appId: '1:407013929066:web:93de262b333cabc82c1a13',
+  databaseURL: 'https://lark-app-e36e8.firebaseio.com',
 };
 
 // Initialize Firebase (singleton pattern)
