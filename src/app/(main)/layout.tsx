@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAppStore } from '@/lib/store';
 import { LarkSidebar } from '@/components/layout/LarkSidebar';
+import { initializeMockData } from '@/lib/mock-data';
 
 export default function MainLayout({
   children,
@@ -13,6 +14,19 @@ export default function MainLayout({
   const router = useRouter();
   const pathname = usePathname();
   const { setActiveModule, user, setUser } = useAppStore();
+
+  // Initialize mock data once
+  useEffect(() => {
+    const initData = async () => {
+      try {
+        await initializeMockData();
+      } catch (error) {
+        console.error('Failed to initialize mock data:', error);
+      }
+    };
+    
+    initData();
+  }, []);
 
   // Set active module based on current pathname
   useEffect(() => {

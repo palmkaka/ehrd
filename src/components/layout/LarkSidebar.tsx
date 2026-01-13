@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useAppStore } from '@/lib/store';
 import {
   Menu,
@@ -17,15 +18,16 @@ import {
 } from 'lucide-react';
 
 export const LarkSidebar: React.FC = () => {
+  const router = useRouter();
   const { activeModule, setActiveModule, sidebarCollapsed, toggleSidebar, user } = useAppStore();
   const [showUserMenu, setShowUserMenu] = useState(false);
 
   const modules = [
-    { id: 'chat' as const, label: 'Chat', icon: MessageCircle },
-    { id: 'docs' as const, label: 'Docs', icon: FileText },
-    { id: 'calendar' as const, label: 'Calendar', icon: Calendar },
-    { id: 'contacts' as const, label: 'Contacts', icon: Users },
-    { id: 'tasks' as const, label: 'Tasks', icon: CheckSquare },
+    { id: 'chat' as const, label: 'Chat', icon: MessageCircle, path: '/chat' },
+    { id: 'docs' as const, label: 'Docs', icon: FileText, path: '/docs' },
+    { id: 'calendar' as const, label: 'Calendar', icon: Calendar, path: '/calendar' },
+    { id: 'contacts' as const, label: 'Contacts', icon: Users, path: '/contacts' },
+    { id: 'tasks' as const, label: 'Tasks', icon: CheckSquare, path: '/tasks' },
   ];
 
   return (
@@ -54,7 +56,10 @@ export const LarkSidebar: React.FC = () => {
           return (
             <button
               key={module.id}
-              onClick={() => setActiveModule(module.id)}
+              onClick={() => {
+                setActiveModule(module.id);
+                router.push(module.path);
+              }}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
                 isActive
                   ? 'bg-blue-600 shadow-lg'
